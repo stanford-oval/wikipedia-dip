@@ -33,7 +33,7 @@ var schema = {
   }
 }
 
-console.log('\n\nWelcome to dumpster-dip\n   a utility to download and parse a wikimedia dump.\n\n')
+console.log('\n\nWelcome to wikipedia-dip\n   a utility to download and parse a wikimedia dump.\n\n')
 prompt.start()
 prompt.override = optimist.argv
 

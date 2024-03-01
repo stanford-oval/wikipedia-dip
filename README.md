@@ -1,20 +1,6 @@
 <div align="center">
-	<h3>dumpster-dip</h3>
-	<a href="https://npmjs.org/package/dumpster-dip">
-		<img src="https://img.shields.io/npm/v/dumpster-dip.svg?style=flat-square" />
-	</a>
-  <!-- <a href="https://www.codacy.com/app/spencerkelly86/dumpster-dip">
-    <img src="https://api.codacy.com/project/badge/grade/6fad3c588d3d4c97ab8a9abf9f2a5a01" />
-  </a> -->
-	<div>wikipedia dump parser</div>
-  <sub>
-    by
-    <a href="http://spencermounta.in/">Spencer Kelly</a>, <a href="https://github.com/devrim">Devrim Yasar</a>,
-		 and
-    <a href="https://github.com/spencermountain/wtf_wikipedia/graphs/contributors">
-      others
-    </a>
-  </sub>
+	<h3>wikipedia-dip</h3>
+	<div>Wikipedia dump parser</div>
   <div>
     <img height="50px" src="https://user-images.githubusercontent.com/399657/68221824-09809d80-ffb8-11e9-9ef0-6ed3574b0ce8.png"/>
   </div>
@@ -26,7 +12,7 @@
 
 The data exports from wikimedia, arguably the world's most-important datasets, exist as <a href="https://dumps.wikimedia.org">huge xml files</a>, in a notorious markup format.
 
-<b>dumpster-dip</b> can flip this dataset into individual <b>json</b> or <b>text</b> files.
+<b>wikipedia-dip</b> can flip this dataset into individual <b>json</b> or <b>text</b> files.
 
 <div align="right">
   <i>Sister-project <b><a href="https://github.com/spencermountain/dumpster-dive">dumpster-dive</a></b> puts this data into mongodb, instead <br/>
@@ -43,7 +29,7 @@ The data exports from wikimedia, arguably the world's most-important datasets, e
 the easiest way to get started is to simply run:
 
 ```bash
-npx dumpster-dip
+npx wikipedia-dip
 ```
 
 which is a wild, no-install, no-dependency way to get going.
@@ -72,11 +58,11 @@ The optional params are:
 Also available to be used as a powerful javascript library:
 
 ```bash
-npm install dumpster-dip
+npm install wikipedia-dip
 ```
 
 ```js
-import dumpster from 'dumpster-dip' // or require('dumpster-dip')
+import dumpster from 'wikipedia-dip' // or require('wikipedia-dip')
 
 await dumpster({ file: './enwiki-latest-pages-articles.xml' }) // 😅
 ```
@@ -98,7 +84,7 @@ cruise the <a href="https://dumps.wikimedia.org/enwiki/latest/">wikipedia dump p
 <b>3. Start</b> the javascript <br/>
 
 ```js
-import dip from 'dumpster-dip'
+import dip from 'wikipedia-dip'
 
 const opts = {
   input: './enwiki-latest-pages-articles.xml',
@@ -155,7 +141,7 @@ en-wikipedia takes about 4hrs on a macbook. See expected article counts [here](h
 
 ### Output formats:
 
-dumpster-dip comes with 4 output formats:
+wikipedia-dip comes with 4 output formats:
 
 - **'flat'** - all files in 1 directory
 - **'encyclopedia'** - all `'E..'` pages in `./e`
@@ -198,7 +184,7 @@ This is the same scheme that wikipedia does internally.
 as a helper, this library exposes a function for navigating this directory scheme:
 
 ```js
-import getPath from 'dumpster-dip/nested-path'
+import getPath from 'wikipedia-dip/nested-path'
 let file = getPath('Dennis Rodman')
 // ./BE/EF/Dennis_Rodman.txt
 ```
@@ -239,7 +225,7 @@ let opts = {
 
 Wikipedia is often a complicated place. Getting specific data may require some investigation, and experimentation:
 
-_See runnable examples in [./examples](https://github.com/spencermountain/dumpster-dip/tree/main/src)_
+_See runnable examples in [./examples](https://github.com/stanford-oval/wikipedia-dip/tree/main/src)_
 
 #### Birthdays of basketball players
 
@@ -336,10 +322,10 @@ wtf.plugin((models, templates) => {
 export default wtf
 ```
 
-then we can pass this version into dumpster-dip:
+then we can pass this version into wikipedia-dip:
 
 ```js
-import dip from 'dumpster-dip'
+import dip from 'wikipedia-dip'
 
 dip({
   input: '/path/to/dump.xml',

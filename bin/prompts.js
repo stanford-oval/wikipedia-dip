@@ -1,6 +1,6 @@
 import inquirer from 'inquirer'
 
-console.log('\n\nWelcome to the dumpster-dip CLI\n')
+console.log('\n\nWelcome to the wikipedia-dip CLI\n')
 
 const whichLang = async function () {
   console.log('\n\n')

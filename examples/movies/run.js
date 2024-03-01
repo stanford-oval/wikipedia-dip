@@ -1,4 +1,4 @@
-import dip from 'dumpster-dip'
+import dip from 'dwikipedia-dip'
 
 const dump = `./enwiki-latest-pages-articles.xml`
 const opts = {

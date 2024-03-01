@@ -1,7 +1,7 @@
 // to run this example, first run
 // npm install wtf-plugin-debug
 // and dl/unzip a wikipedia dump
-import dip from 'dumpster-dip'
+import dip from 'wikipedia-dip'
 
 const dump = `./afwiki-latest-pages-articles.xml`
 

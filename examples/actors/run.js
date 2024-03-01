@@ -1,7 +1,7 @@
 // to run this demo, first
 // npm install wtf-plugin-classify wtf-plugin-summary wtf-plugin-person
 // and then dl/unzip a wikipedia dump
-import dip from 'dumpster-dip'
+import dip from 'wikipedia-dip'
 
 const dump = `../enwiki-latest-pages-articles.xml`
 const opts = {

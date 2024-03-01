@@ -1,7 +1,6 @@
-import dip from 'dumpster-dip'
+import dip from 'wikipedia-dip'
 
-// const afwiki = `/Volumes/4TB/wikipedia/afwiki-latest-pages-articles.xml`
-const afwiki = `/Users/spencer/mountain/dumpster-dip/afwiki-latest-pages-meta-current.xml`
+const afwiki = `~/afwiki-latest-pages-meta-current.xml`
 
 const opts = {
   input: afwiki,
@@ -17,7 +16,7 @@ await dip(opts).then(() => {
   console.log('done')
 })
 
-// import getPath from 'dumpster-dip/nested-path'
+// import getPath from 'wikipedia-dip/nested-path'
 // let file = getPath('Dennis Rodman')
 // console.log(file)
 // ./BE/EF/Dennis_Rodman.txt

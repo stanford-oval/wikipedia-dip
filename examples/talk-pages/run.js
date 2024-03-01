@@ -1,7 +1,7 @@
 // talk pages are not found in the normal 'latest-pages-articles.xml' dump.
 // instead, you must download the larger 'latest-pages-meta-current.xml' dump
 // to process only Talk pages, set 'namespace' to 1
-import dip from 'dumpster-dip'
+import dip from 'wikipedia-dip'
 
 const afwiki = `./afwiki-latest-pages-meta-current.xml`
 
