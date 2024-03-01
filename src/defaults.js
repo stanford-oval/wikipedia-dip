@@ -23,5 +23,6 @@ export default {
   // what do return, for every page
   parse: function (doc) {
     return doc.json()
-  }
+  },
+  totalSize: 6000000 // Total number of articles, used to display a progress bar
 }

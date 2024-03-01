@@ -6,7 +6,10 @@ import { fileURLToPath } from 'url'
 import { JSONfn } from 'jsonfn'
 import { checkFile, makeDir } from './prep.js'
 import getSummary from './summary.js'
-import { blue, yellow, magenta, grey } from '../_lib.js'
+import { blue, yellow } from '../_lib.js'
+import CustomProgressBar from './progressbar.js'
+
+
 const dir = path.dirname(fileURLToPath(import.meta.url))
 
 class Pool extends EventEmitter {
@@ -21,12 +24,13 @@ class Pool extends EventEmitter {
     // start the logger
     this.heartbeat = setInterval(() => this.beat(), this.opts.heartbeat)
     this.status = [{}]
+    this.progressBar = new CustomProgressBar(opts.totalSize)
   }
   // kick off each worker, on a part of the file
   start() {
     let bytes = fs.statSync(this.opts.input)['size']
-    const mb = Math.round(bytes / 1048576) + 'mb'
-    console.log(`\n\nstarting ${blue(this.opts.workers)} workers on the ${yellow(mb)} file`)
+    const gb = parseFloat((bytes / (1024 * 1024 * 1024)).toFixed(1)) + 'GB'
+    console.log(`\n\nStarting ${blue(this.opts.workers)} workers on the ${yellow(gb)} file`)
 
     for (let i = 0; i < this.opts.workers; i += 1) {
       // Create each worker.
@@ -53,15 +57,13 @@ class Pool extends EventEmitter {
       })
       worker.on('error', (err) => console.error(err))
       worker.on('exit', (code) => {
-        console.log('worker done', code)
+        console.log('Worker done', code)
       })
       this.workers.push(worker)
     }
-    let header = this.workers.map((_, i) => ` #${i + 1}`.padStart('8')).join('   ')
-    console.log('\n' + magenta(header))
   }
   stop() {
-    console.log('cleaning up...')
+    console.log('Cleaning up...')
     clearInterval(this.heartbeat)
     // this.workers.forEach(w => w.emit('exit'))
     // this.emit('exit');
@@ -78,10 +80,10 @@ class Pool extends EventEmitter {
   beat() {
     this.workers.forEach((w) => w.postMessage('thump'))
     setTimeout(() => {
-      let row = this.status
-        .map((o) => (o.written !== undefined ? o.written.toLocaleString().padStart('8') : '???'))
-        .join('   ')
-      console.log(grey(row))
+      // console.log(this.status)
+      let totalProgress = this.status.reduce((sum, o) => o.processed !== undefined ? sum + o.processed : sum, 0)
+      this.progressBar.tick(totalProgress)
+
       // are they all done?
       let allDone = this.status.every((obj) => obj.finished === true)
       if (allDone === true) {

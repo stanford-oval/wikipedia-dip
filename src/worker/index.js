@@ -79,7 +79,7 @@ const eachPage = function (meta) {
 setTimeout(() => {
   // start off the worker!
   reader({ index, workers, file: input }, eachPage).then((doc) => {
-    console.log(magenta(`worker #${index} finished`))
+    console.log(magenta(`\nWorker #${index} finished`))
     status.finished = true
   })
 }, 2000)
