@@ -173,8 +173,8 @@ This format nests each file 2-deep, using the first 4 characters of the filename
 ```
 /BE
   /EF
-    /Dennis_Rodman.txt
-    /Hilary_Clinton.txt
+    /Dennis_Rodman.json
+    /Hilary_Clinton.json
 ```
 
 Although these directory names are meaningless, the advantage of this format is that files will be distributed evenly, instead of piling-up in the 'E' directory.
@@ -186,7 +186,7 @@ as a helper, this library exposes a function for navigating this directory schem
 ```js
 import getPath from 'wikipedia-dip/nested-path'
 let file = getPath('Dennis Rodman')
-// ./BE/EF/Dennis_Rodman.txt
+// ./BE/EF/Dennis_Rodman.json
 ```
 
 ##### Flat:

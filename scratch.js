@@ -19,4 +19,4 @@ await dip(opts).then(() => {
 // import getPath from 'wikipedia-dip/nested-path'
 // let file = getPath('Dennis Rodman')
 // console.log(file)
-// ./BE/EF/Dennis_Rodman.txt
+// ./BE/EF/Dennis_Rodman.json
